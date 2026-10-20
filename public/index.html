@@ -134,14 +134,30 @@ const el = (t, c, x) => { const e = document.createElement(t); if (c) e.classNam
 const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 
 /* ---------- Configuration : adaptez ces chemins à votre serveur ---------- */
-const SET_IDS = ['30th', 'NuitNoire'];                       // extensions proposées (un onglet chacune)
+const SET_IDS = [
+  'MegaEvolution',
+  'FlammesFantasmagoriques',
+  'HerosTranscendants',
+  'EquilibreParfait',
+  'ChaosAscendant',
+  'NuitNoire',
+  '30th',
+];                                                       // extensions proposées (un onglet chacune)
 const URLS = {
   cartes:  id => `data/${id}/cartes.json`,                 // { nom, serie, sortie, set, cartes: [{ id, name, rarity }] }
   booster: id => `data/${id}/booster.json`,                // { set, booster: { slots: [{ position, rarities: { rareté: % } }] } }
   image:   (id, carte) => `assets/images/${id}/${carte}.webp`,
   save:    p => `api/save/${encodeURIComponent(p)}`,   // GET : progression du joueur (JSON, 404 si aucune) ; PUT : la remplace
 };
-const LOOK = { '30th': ['#ffcb3d', '#ff7a3d', '#c2306b', '#2a1300'], 'NuitNoire': ['#7b5cff', '#32207a', '#0f0b2e', '#f1efff'] };
+const LOOK = {
+  'MegaEvolution':           ['#ff6b9d', '#c44569', '#6b2d5c', '#fff'],
+  'FlammesFantasmagoriques': ['#ff9f43', '#ee5a24', '#b33939', '#2a1300'],
+  'HerosTranscendants':      ['#54a0ff', '#2e86de', '#1e3799', '#fff'],
+  'EquilibreParfait':        ['#1dd1a1', '#10ac84', '#0a3d62', '#fff'],
+  'ChaosAscendant':          ['#ff6b6b', '#c44569', '#2c2c54', '#fff'],
+  'NuitNoire':               ['#7b5cff', '#32207a', '#0f0b2e', '#f1efff'],
+  '30th':                    ['#ffcb3d', '#ff7a3d', '#c2306b', '#2a1300'],
+};
 
 const SETS = SET_IDS.map(id => ({ id, nom: id, serie: '', cards: [], slots: [], byRarity: {}, boosters: 0, owned: {}, error: '', absent: false }));
 let cur = SETS[0], busy = false, saveReady = false, canSave = false, pseudo = '', shown = [];
