@@ -106,9 +106,9 @@ const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase
 /* ---------- Configuration : adaptez ces chemins à votre serveur ---------- */
 const SET_IDS = ['30th', 'NuitNoire'];                       // extensions proposées (un onglet chacune)
 const URLS = {
-  cartes:  id => `/data/${id}/cartes.json`,                 // { nom, serie, sortie, set, cartes: [{ id, name, rarity }] }
-  booster: id => `/data/${id}/booster.json`,                // { set, booster: { slots: [{ position, rarities: { rareté: % } }] } }
-  image:   (id, carte) => `/data/${id}/img/${carte}.webp`,
+  cartes:  id => `data/${id}/cartes.json`,                 // { nom, serie, sortie, set, cartes: [{ id, name, rarity }] }
+  booster: id => `data/${id}/booster.json`,                // { set, booster: { slots: [{ position, rarities: { rareté: % } }] } }
+  image:   (id, carte) => `assets/images/${id}/${carte}.webp`,
 };
 const LOOK = { '30th': ['#ffcb3d', '#ff7a3d', '#c2306b', '#2a1300'], 'NuitNoire': ['#7b5cff', '#32207a', '#0f0b2e', '#f1efff'] };
 
