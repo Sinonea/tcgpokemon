@@ -1,0 +1,125 @@
+001	Tropius	Commune
+002	Larvibule	Commune
+003	Mimantis	Commune
+004	Floramantis-ex	Double Rare
+005	Poltchageist	Commune
+006	Théffroyable	Peu Commune
+007	Heatran	Peu Commune
+008	Méga-Goupelin-ex	Double Rare
+009	Grillepattes	Commune
+010	Scolocendre	Commune
+011	Charbambin	Commune
+012	Carmadura	Rare
+013	Poissirène	Commune
+014	Poissoroy	Peu Commune
+015	Wailmer	Commune
+016	Wailord-ex	Double Rare
+017	Relicanth	Peu Commune
+018	Otaquin	Commune
+019	Otarlette	Commune
+020	Oratoria	Rare
+021	Dofin	Commune
+022	Superdofin	Peu Commune
+023	Dynavolt	Commune
+024	Élecsprint	Peu Commune
+025	Chrysapile	Commune
+026	Lucanon	Peu Commune
+027	Méga-Zeraora-ex	Double Rare
+028	Miraidon	Rare
+029	Ramoloss	Commune
+030	Flagadoss	Peu Commune
+031	Méga-Flagadoss-ex	Double Rare
+032	Lippoutou	Commune
+033	Polichombr	Commune
+034	Branette	Peu Commune
+035	Spiritomb	Rare
+036	Funécire	Commune
+037	Mélancolux	Peu Commune
+038	Méga-Lugulabre-ex	Double Rare
+039	Sinistrail	Peu Commune
+040	Marshadow	Peu Commune
+041	Courrousinge	Peu Commune
+042	Férosinge	Commune
+043	Colossinge	Commune
+044	Kranidos	Commune
+045	Charkos-ex	Double Rare
+046	Rototaupe	Commune
+047	Koraidon	Rare
+048	Méga-Darkrai-ex	Double Rare
+049	Vostourno	Commune
+050	Vaututrice	Commune
+051	Sepiatop	Commune
+052	Sepiatroce	Peu Commune
+053	Goupilou	Commune
+054	Roublenard	Peu Commune
+055	Morpeko-ex	Double Rare
+056	Zarude	Rare
+057	Grondogue	Commune
+058	Dogrino	Commune
+059	Yuyu	Rare
+060	Airmure	Commune
+061	Dinoclier	Commune
+062	Bastiodon	Rare
+063	Archéomire	Commune
+064	Archéodong	Peu Commune
+065	Méga-Minotaupe-ex	Double Rare
+066	Picassaut	Commune
+067	Piclairon	Commune	Commune	Commune
+068	Bazoucan	Peu Commune
+069	Type:0	Commune	Commune
+070	Silvallié	Rare
+071	Lestombaile	Commune
+072	Fossile Armure Ancien	Commune
+073	Fossile Crâne Ancien	Commune
+074	Badge Rebelote	Peu Commune
+075	Cloche Ténébreuse	Peu Commune
+076	Carrière Fossile	Peu Commune
+077	Combat Final de Gladio	Peu Commune
+078	Albia	Peu Commune
+079	Bridjet	Peu Commune
+080	Vitalité d'Ondine	Peu Commune
+081	Sbire du Clan Dérouillard	Peu Commune
+082	Bombe Géniale	Peu Commune
+083	Énergie Obscurité Sombre	Rare
+084	Énergie Électrique Voltaïque	Rare
+085	Mimantis	Illustration Rare
+086	Carmadura	Illustration Rare
+087	Poissirène	Illustration Rare
+088	Oratoria	Illustration Rare
+089	Élecsprint	Illustration Rare
+090	Flagadoss	Illustration Rare
+091	Sinistrail	Illustration Rare
+092	Roublenard	Illustration Rare
+093	Bastiodon	Illustration Rare
+094	Bazoucan	Illustration Rare
+095	Silvallié	Illustration Rare
+096	Floramantis-ex	Ultra Rare
+097	Wailord-ex	Ultra Rare
+098	Méga-Zeraora-ex	Ultra Rare
+099	Méga-Lugulabre-ex	Ultra Rare
+100	Charkos-ex	Ultra Rare
+101	Méga-Darkrai-ex	Ultra Rare
+102	Morpeko-ex	Ultra Rare
+103	Méga-Minotaupe-ex	Ultra Rare
+104	Bracelet Vaillant	Ultra Rare
+105	Maillet Écrasant	Ultra Rare
+106	Cloche Ténébreuse	Ultra Rare
+107	Échange d'Énergie	Ultra Rare
+108	Combat Final de Gladio	Ultra Rare
+109	Albia	Ultra Rare
+110	Défense de Fer	Ultra Rare
+111	Vitalité d'Ondine	Ultra Rare
+112	Sbire du Clan Dérouillard	Ultra Rare
+113	Bombe Géniale	Ultra Rare
+114	Méga-Zeraora-ex	Illustration Spéciale Rare
+115	Méga-Lugulabre-ex	Illustration Spéciale Rare
+116	Méga-Darkrai-ex	Illustration Spéciale Rare
+117	Morpeko-ex	Illustration Spéciale Rare
+118	Combat Final de Gladio	Illustration Spéciale Rare
+119	Albia	Illustration Spéciale Rare
+120	Méga-Darkrai-ex	Méga Hyper Rare
+Promo_ME_082	Miraidon	Promo
+Promo_ME_083	Flagadoss	Promo
+Promo_ME_084	Sinistrail	Promo
+Promo_ME_085	Bastiodon	Promo
+Promo_ME_088	Zarude	Promo

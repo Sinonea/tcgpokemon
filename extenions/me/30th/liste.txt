@@ -1,0 +1,188 @@
+001	Noeunoeuf	Commune
+002	Noadkoko d'Alola	Commune
+003	Muciole	Commune
+004	Lumivole	Commune
+005	Tropius	Commune
+006	Ceribou	Commune
+007	Ceriflor	Commune
+008	Prismillon	Commune
+009	Goupix	Commune
+010	Feunard	Commune
+011	Sulfura	Commune
+012	Ho-Oh	Rare
+013	Victini	Commune
+014	Reshiram	Rare
+015	Chochodile-ex	Double Rare
+016	Ramoloss	Commune
+017	Lokhlass	Commune
+018	Artikodin	Commune
+019	Kyogre	Rare
+020	Palkia	Rare
+021	Amphinobi-ex	Double Rare
+022	Froussardine	Commune
+023	Pikachu	Rare Pikachu
+024	Pikachu	Rare Pikachu
+025	Pikachu	Rare Pikachu
+026	Pikachu	Rare Pikachu
+027	Pikachu	Rare Pikachu
+028	Pikachu	Rare Pikachu
+029	Pikachu	Rare Pikachu
+030	Pikachu	Rare Pikachu
+031	Pikachu	Rare Pikachu
+032	Pikachu	Rare Pikachu
+033	Pikachu	Rare Pikachu
+034	Pikachu	Rare Pikachu
+035	Pikachu	Rare Pikachu
+036	Pikachu	Rare Pikachu
+037	Pikachu	Rare Pikachu
+038	Pikachu	Rare Pikachu
+039	Pikachu	Rare Pikachu
+040	Pikachu	Rare Pikachu
+041	Pikachu	Rare Pikachu
+042	Pikachu	Rare Pikachu
+043	Pikachu	Rare Pikachu
+044	Pikachu	Rare Pikachu
+045	Pikachu	Rare Pikachu
+046	Pikachu	Rare Pikachu
+047	Pikachu	Rare Pikachu
+048	Pikachu	Rare Pikachu
+049	Pikachu	Rare Pikachu
+050	Pikachu	Rare Pikachu
+051	Pikachu	Rare Pikachu
+052	Pikachu	Rare Pikachu
+053	Pikachu-ex	Double Rare
+054	Pikachu-ex	Double Rare
+055	Électhor	Commune
+056	Zekrom	Rare
+057	Zeraora	Commune
+058	Toxizap	Commune
+059	Salarsen	Commune
+060	Salarsen	Commune
+061	Morpeko	Commune
+062	Miraidon	Rare
+063	Mewtwo	Rare
+064	Mewtwo-ex	Double Rare
+065	Mew	Rare
+066	Mew-ex	Double Rare
+067	Marill	Commune
+068	Azumarill	Commune
+069	Mentali	Commune
+070	Mentali-ex	Double Rare
+071	Nymphali-ex	Double Rare
+072	Zarbi	Commune
+073	Baudrive	Commune
+074	Cresselia	Commune
+075	Lugulabre	Commune
+076	Xerneas	Rare
+077	Guérilande	Commune
+078	Cosmog	Commune
+079	Cosmovum	Commune
+080	Lunala	Rare
+081	Mordudor	Commune
+082	Groudon	Rare
+083	Lucario	Commune
+084	Crapustule	Commune
+085	Lougaroc	Commune
+086	Koraidon	Rare
+087	Nidoran♀	Commune
+088	Nidorina	Commune
+089	Miaouss d'Alola	Commune
+090	Ectoplasma-ex	Double Rare
+091	Noctali	Commune
+092	Noctali-ex	Double Rare
+093	Cornèbre	Commune
+094	Baggiguane	Commune
+095	Zorua	Commune
+096	Zoroark	Commune
+097	Solochi	Commune
+098	Diamat	Commune
+099	Trioxhydre	Commune
+100	Yveltal	Rare
+101	Miaouss de Galar	Commune
+102	Jirachi-ex	Double Rare
+103	Dialga	Rare
+104	Noacier	Commune
+105	Solgaleo	Rare
+106	Zacian	Rare
+107	Zamazenta	Rare
+108	Gromago	Commune
+109	Drattak-ex	Double Rare
+110	Bébécaille	Commune
+111	Écaïd	Commune
+112	Ékaïser	Commune
+113	Miaouss	Commune
+114	Kangourex	Commune
+115	Métamorph	Commune
+116	Évoli	Commune
+117	Évoli	Commune
+118	Évoli	Commune
+119	Ronflex	Commune
+120	Toudoudou	Commune
+121	Lugia	Rare
+122	Zorua de Hisui	Commune
+123	Zoroark de Hisui	Commune
+124	Météno	Commune
+125	Famignol	Commune
+126	Poké Registre	Commune
+127	Échange	Commune
+128	Hyper Ball	Commune
+129	Noadkoko d'Alola	Illustration Rare
+130	Sulfura	Illustration Rare
+131	Lokhlass	Illustration Rare
+132	Artikodin	Illustration Rare
+133	Électhor	Illustration Rare
+134	Salarsen	Illustration Rare
+135	Morpeko	Illustration Rare
+136	Baudrive	Illustration Rare
+137	Lugulabre	Illustration Rare
+138	Lougaroc	Illustration Rare
+139	Miaouss d'Alola	Illustration Rare
+140	Baggiguane	Illustration Rare
+141	Miaouss de Galar	Illustration Rare
+142	Gromago	Illustration Rare
+143	Ékaïser	Illustration Rare
+144	Miaouss	Illustration Rare
+145	Zorua de Hisui	Illustration Rare
+146	Famignol	Illustration Rare
+147	Chochodile-ex	Illustration Spéciale Rare
+148	Amphinobi-ex	Illustration Spéciale Rare
+149	Pikachu-ex	Illustration Spéciale Rare
+150	Pikachu-ex	Illustration Spéciale Rare
+151	Mewtwo-ex	Illustration Spéciale Rare
+152	Mew-ex	Illustration Spéciale Rare
+153	Nymphali-ex	Illustration Spéciale Rare
+154	Ectoplasma-ex	Illustration Spéciale Rare
+155	Jirachi-ex	Illustration Spéciale Rare
+156	Drattak-ex	Illustration Spéciale Rare
+157	Mewtwo-ex	Rare Futuriste
+158	Mew-ex	Rare Futuriste
+CC001	Dracaufeu	Collection Classique
+CC002	Delcatty	Collection Classique
+CC003	Metalosse	Collection Classique
+CC004	Genesect EX	Collection Classique
+CC005	Ondine	Collection Classique
+CC006	Tyranocif obscur	Collection Classique
+CC007	Farfuret	Collection Classique
+CC008	Pikachu et Zekrom GX	Collection Classique
+CC009	Amphinobi TURBO	Collection Classique
+CC010	Créhelf	Collection Classique
+CC011	Nostenfert G	Collection Classique
+CC012	Raikou	Collection Classique
+CC013	Mouscoto GX	Collection Classique
+CC014	Pikachu	Collection Classique
+CC015	Rondoudou d'Erika	Collection Classique
+CC016	Rayquaza EX	Collection Classique
+CC017	Solgaleo GX	Collection Classique
+CC018	Ectoplasma	Collection Classique
+CC019	Darkrai & Cresselia LÉGENDE	Collection Classique
+CC020	Darkrai & Cresselia LÉGENDE	Collection Classique
+CC021	N	Collection Classique
+CC022	Palkia	Collection Classique
+CC023	M-Gardevoir EX	Collection Classique
+CC024	Celebi brillant	Collection Classique
+CC025	Cizayox ex	Collection Classique
+CC026	Mew-VMAX	Collection Classique
+CC027	Arceus-VSTAR	Collection Classique
+CC028	Zacian-V	Collection Classique
+CC029	Lugia	Collection Classique
+CC030	Magicarpe	Collection Classique
