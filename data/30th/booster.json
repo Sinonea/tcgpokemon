@@ -1,0 +1,43 @@
+{
+    "set": "30th",
+    "booster": {
+        "slots": [
+            {
+                "position": 1,
+                "rarities": {
+                    "Rare Pikachu": 100
+                }
+            },
+            {
+                "position": 2,
+                "rarities": {
+                    "Commune": 100
+                }
+            },
+            {
+                "position": 3,
+                "rarities": {
+                    "Commune": 100
+                }
+            },
+            {
+                "position": 4,
+                "rarities": {
+                    "Commune": 90,
+                    "Collection Classique": 10
+                }
+            },
+            {
+                "position": 5,
+                "rarities": {
+                    "Rare": 50,
+                    "Double Rare": 25,
+                    "Illustration Rare": 16.7,
+                    "Illustration Spéciale Rare": 5,
+                    "Commune": 2.4,
+                    "Rare Futuriste": 0.97
+                }
+            }
+        ]
+    }
+}

@@ -1,1 +1,237 @@
-Bonjour Internet !
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulateur de booster</title>
+<style>
+:root{
+  --bg:#17143a; --panel:#221e52; --line:#3a3580; --text:#f1efff; --muted:#a9a5d6; --gold:#ffcb3d;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,#2f2a72,var(--bg) 60%);color:var(--text);
+  font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;line-height:1.5}
+main{max-width:1000px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:1.7rem;margin:0 0 16px;letter-spacing:.01em}
+details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:28px}
+summary{cursor:pointer;font-weight:700}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:12px}
+label{display:block;font-size:.9rem;color:var(--muted)}
+input[type=file],input[type=text]{display:block;width:100%;margin-top:4px;color:var(--text);background:#17143a;
+  border:1px solid var(--line);border-radius:8px;padding:6px}
+#status{margin:0 0 20px;text-align:center;font-size:.9rem;color:#ffb86b}
+#slotsInfo{margin:6px 0 0;padding-left:18px;font-size:.85rem;color:var(--muted)}
+.stage{display:flex;flex-direction:column;align-items:center;gap:24px}
+.pack{width:150px;height:230px;border:0;border-radius:10px;cursor:pointer;position:relative;overflow:hidden;
+  background:var(--pg,linear-gradient(160deg,#ffcb3d,#ff7a3d 55%,#c2306b));color:var(--ink,#2a1300);font:inherit;font-weight:800;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  box-shadow:0 12px 30px #0009;transition:transform .2s}
+.pack:hover:not(:disabled){transform:translateY(-4px) rotate(-1.5deg)}
+.pack:disabled{filter:grayscale(1);opacity:.45;cursor:not-allowed}
+.pack::before,.pack::after{content:"";position:absolute;left:0;right:0;height:16px;
+  background:repeating-linear-gradient(90deg,#0003 0 6px,transparent 6px 12px)}
+.pack::before{top:0}.pack::after{bottom:0}
+.pack .big{font-size:1.25rem;line-height:1.15;padding:0 10px;text-align:center;overflow-wrap:anywhere}
+.pack .small{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+.pack.open{animation:shake .65s}
+@keyframes shake{0%,100%{transform:rotate(0)}15%{transform:rotate(-6deg) scale(1.04)}30%{transform:rotate(6deg) scale(1.06)}
+  45%{transform:rotate(-5deg) scale(1.08)}60%{transform:rotate(4deg) scale(1.1)}85%{transform:scale(1.12);opacity:.4}}
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:26px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 22px;cursor:pointer}
+.tab[aria-pressed=true]{color:var(--text);background:var(--panel);border-color:var(--gold)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{font:inherit;font-weight:700;color:var(--text);background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:8px 18px;cursor:pointer}
+.btn:hover{border-color:var(--gold)}
+#cards{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;min-height:20px}
+.card{width:clamp(120px,17vw,170px);aspect-ratio:63/88;perspective:900px;padding:0;border:0;background:none;
+  cursor:pointer;animation:deal .5s both}
+@keyframes deal{from{opacity:0;transform:translateY(-40px) scale(.9)}to{opacity:1;transform:none}}
+.inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s}
+.card.flipped .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:10px;overflow:hidden;backface-visibility:hidden}
+.back{background:repeating-linear-gradient(45deg,#2e45b8 0 8px,#243898 8px 16px);border:3px solid var(--gold)}
+.front{transform:rotateY(180deg);background:#0d0b24;border:2px solid var(--c)}
+.front img{width:100%;height:100%;object-fit:cover;display:block}
+.front.noimg{display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;color:var(--c)}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:18px 6px 6px;font-size:.72rem;text-align:center;
+  background:linear-gradient(transparent,#000d);display:flex;flex-direction:column;gap:2px}
+.badge{color:var(--c);font-weight:700}
+.card.flipped.hit .front{box-shadow:0 0 22px 5px var(--c);animation:glow 1.6s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 34px 10px var(--c)}}
+.tally{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:34px;font-size:.85rem}
+.chip{border:1px solid var(--c);color:var(--c);border-radius:999px;padding:2px 12px}
+#coll{margin-top:20px}
+#saveStatus{text-align:center;color:var(--muted);font-size:.85rem;margin:24px 0 0}
+#collList{columns:2 220px;list-style:none;padding:0;margin:10px 0 0;font-size:.85rem}
+#saveStatus.warn{color:#ffb86b}
+#count{text-align:center;color:var(--muted);font-size:.9rem;margin-top:30px}
+.card:focus-visible,.pack:focus-visible,.btn:focus-visible,.tab:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+#setup{margin:30px 0 0}
+</style>
+</head>
+<body>
+<main>
+  <h1>Simulateur de booster</h1>
+
+  <div id="tabs" class="tabs" role="group" aria-label="Extension" hidden></div>
+  <p id="status" hidden></p>
+
+  <div class="stage">
+    <button id="pack" class="pack" type="button" disabled>
+      <span id="packSerie" class="small"></span>
+      <span id="packNom" class="big"></span>
+      <span class="small">Booster</span>
+    </button>
+    <div class="actions">
+      <button id="revealAll" class="btn" type="button" hidden>Tout retourner</button>
+    </div>
+    <div id="cards" aria-live="polite"></div>
+  </div>
+
+  <details id="setup">
+    <summary>Probabilités du booster</summary>
+    <ul id="slotsInfo"></ul>
+  </details>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
+const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+/* ---------- Configuration : adaptez ces chemins à votre serveur ---------- */
+const SET_IDS = ['30th', 'NuitNoire'];                       // extensions proposées (un onglet chacune)
+const URLS = {
+  cartes:  id => `/data/${id}/cartes.json`,                 // { nom, serie, sortie, set, cartes: [{ id, name, rarity }] }
+  booster: id => `/data/${id}/booster.json`,                // { set, booster: { slots: [{ position, rarities: { rareté: % } }] } }
+  image:   (id, carte) => `/data/${id}/img/${carte}.webp`,
+};
+const LOOK = { '30th': ['#ffcb3d', '#ff7a3d', '#c2306b', '#2a1300'], 'NuitNoire': ['#7b5cff', '#32207a', '#0f0b2e', '#f1efff'] };
+
+const SETS = SET_IDS.map(id => ({ id, nom: id, serie: '', cards: [], slots: [], byRarity: {}, error: '', absent: false }));
+let cur = SETS[0], busy = false;
+
+/* ---------- Chargement des données ---------- */
+async function getJSON(u) {
+  const r = await fetch(u, { cache: 'no-store' });
+  if (!r.ok) { const e = new Error('HTTP ' + r.status); e.status = r.status; throw e; }
+  return r.json();
+}
+
+async function loadSet(s) {
+  try {
+    const [c, b] = await Promise.all([getJSON(URLS.cartes(s.id)), getJSON(URLS.booster(s.id))]);
+    s.nom = c.nom || s.id; s.serie = c.serie || '';
+    s.cards = (c.cartes || []).map(x => ({ id: String(x.id), name: String(x.name), rarity: String(x.rarity) }));
+    s.slots = ((b.booster && b.booster.slots) || []).slice().sort((x, y) => (x.position || 0) - (y.position || 0))
+      .map(sl => Object.entries(sl.rarities || {}).map(([rarity, p]) => ({ rarity, p: Number(p) })).filter(o => o.p > 0))
+      .filter(sl => sl.length);
+    s.byRarity = {};
+    s.cards.forEach(c => (s.byRarity[norm(c.rarity)] ||= []).push(c));
+    if (!s.cards.length || !s.slots.length) throw new Error('cartes ou emplacements vides');
+    const missing = [...new Set(s.slots.flat().map(o => o.rarity))].filter(r => !s.byRarity[norm(r)]);
+    if (missing.length) s.error = 'Raretés sans carte dans ' + URLS.cartes(s.id) + ' : ' + missing.join(', ') + '.';
+  } catch (e) {
+    s.absent = e.status === 404;
+    s.cards = []; s.slots = [];
+    s.error = location.protocol === 'file:'
+      ? 'Ouvrez la page depuis le serveur (http), pas en double-clic : le navigateur bloque la lecture des fichiers JSON.'
+      : `Chargement impossible (${URLS.cartes(s.id)}, ${URLS.booster(s.id)}) : ${e.message}`;
+  }
+}
+
+/* ---------- Tirage ---------- */
+function pickOption(slot) {
+  const opts = slot.filter(o => cur.byRarity[norm(o.rarity)]);
+  const total = opts.reduce((s, o) => s + o.p, 0);
+  let r = Math.random() * total;
+  for (const o of opts) { if ((r -= o.p) < 0) return { o, share: o.p / total }; }
+  return { o: opts[opts.length - 1], share: 1 };
+}
+
+function draw() {
+  const pack = [];
+  for (const slot of cur.slots) {
+    const { o, share } = pickOption(slot);
+    const pool = cur.byRarity[norm(o.rarity)];
+    let c, n = 0;
+    do { c = pool[Math.floor(Math.random() * pool.length)]; n++; } while (pack.some(x => x.card.id === c.id) && n < 25);
+    pack.push({ card: c, hit: share < 0.1 });
+  }
+  return pack;
+}
+
+/* ---------- Affichage ---------- */
+const COL = { 'commune': '#aab0c8', 'rare': '#4da3ff', 'double rare': '#ffcb3d', 'illustration rare': '#3ddc97',
+  'illustration speciale rare': '#ff6fb5', 'rare futuriste': '#b88cff', 'rare pikachu': '#ffe04d', 'collection classique': '#ff9a5c' };
+function hue(k) { let h = 0; for (const ch of k) h = (h * 31 + ch.charCodeAt(0)) % 360; return h; }
+function col(r) { const k = norm(r); return COL[k] || `hsl(${hue(k)} 70% 65%)`; }
+
+function capOf(card) {
+  const cap = el('div', 'cap');
+  cap.append(el('span', '', card.id + ' · ' + card.name), el('span', 'badge', card.rarity));
+  return cap;
+}
+
+function render(pack) {
+  const box = $('#cards'); box.replaceChildren();
+  pack.forEach(({ card, hit }, i) => {
+    const b = el('button', 'card' + (hit ? ' hit' : '')); b.type = 'button';
+    b.style.setProperty('--c', col(card.rarity)); b.style.animationDelay = i * 90 + 'ms';
+    const inner = el('div', 'inner'), back = el('div', 'face back'), front = el('div', 'face front');
+    const img = new Image(); img.alt = card.name; img.src = URLS.image(cur.id, card.id);
+    img.onerror = () => { img.remove(); front.classList.add('noimg'); front.textContent = card.id; front.append(capOf(card)); };
+    front.append(img, capOf(card));
+    inner.append(back, front); b.append(inner);
+    b.onclick = () => b.classList.toggle('flipped');
+    box.append(b);
+  });
+  $('#revealAll').hidden = false;
+}
+
+function selectSet(s) {
+  if (busy) return;
+  cur = s;
+  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === s.id)));
+  const [a, b, c, ink] = LOOK[s.id] || [`hsl(${hue(s.id)} 80% 62%)`, `hsl(${hue(s.id) + 40} 60% 38%)`, `hsl(${hue(s.id) + 80} 60% 16%)`, '#fff'];
+  const p = $('#pack');
+  p.style.setProperty('--pg', `linear-gradient(160deg,${a},${b} 55%,${c})`); p.style.setProperty('--ink', ink);
+  $('#packNom').textContent = s.nom; $('#packSerie').textContent = s.serie;
+  $('#cards').replaceChildren(); $('#revealAll').hidden = true;
+  const st = $('#status'); st.textContent = s.error; st.hidden = !s.error;
+  const ul = $('#slotsInfo'); ul.replaceChildren();
+  s.slots.forEach((sl, i) => ul.append(el('li', '', `Carte ${i + 1} : ` + sl.map(o => `${o.rarity} ${o.p} %`).join(', '))));
+  p.disabled = !(s.cards.length && s.slots.length);
+}
+
+$('#pack').onclick = () => {
+  if (busy) return; busy = true;
+  const pack = draw(), p = $('#pack');
+  p.classList.add('open');
+  setTimeout(() => { p.classList.remove('open'); render(pack); busy = false; }, 650);
+};
+$('#revealAll').onclick = () => {
+  document.querySelectorAll('.card:not(.flipped)').forEach((c, i) => setTimeout(() => c.classList.add('flipped'), i * 250));
+};
+
+/* ---------- Démarrage ---------- */
+(async () => {
+  await Promise.all(SETS.map(loadSet));
+  const shown = SETS.filter(s => !s.absent);              // une extension dont cartes.json n'existe pas (404) n'est pas affichée
+  if (!shown.length) { selectSet(SETS[0]); return; }
+  if (shown.length > 1) {
+    shown.forEach(s => {
+      const b = el('button', 'tab', s.nom); b.type = 'button'; b.dataset.set = s.id; b.onclick = () => selectSet(s);
+      $('#tabs').append(b);
+    });
+    $('#tabs').hidden = false;
+  }
+  selectSet(shown[0]);
+})();
+</script>
+</body>
+</html>
