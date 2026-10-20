@@ -14,7 +14,7 @@ app = FastAPI()
 TOKEN = os.environ.get("ADMIN_TOKEN") or "change-me-in-production"
 PSEUDO_RE = re.compile(r"^[a-z0-9_-]{2,20}$")
 MAX_BODY = 1_000_000
-SAVES_PREFIX = "/saves/"
+SAVES_PREFIX = "saves/"
 
 def is_admin(authorization: Optional[str]) -> bool:
     if not authorization:
@@ -73,20 +73,20 @@ async def admin_saves(authorization: Optional[str] = Header(None)):
 
     sauvegardes = []
     try:
-        listing = await blob.list(prefix=SAVES_PREFIX)
-        for b in listing.get("blobs", []):
-            name = b.get("pathname", "").removeprefix(SAVES_PREFIX)
+        async for b in blob.query_blobs(prefix=SAVES_PREFIX):
+            name = b.pathname.removeprefix(SAVES_PREFIX)
             if not name.endswith(".json"):
                 continue
             p = name[:-5]
             if not valid_pseudo(p):
                 continue
             try:
-                result = await blob.get_blob(b["pathname"], access="private")
+                result = await blob.get_blob(b.pathname, access="private")
                 data = json.loads(result.body.decode("utf-8"))
-                # Date approximative (Blob fournit uploadedAt)
-                maj = b.get("uploadedAt") or datetime.now(timezone.utc).isoformat(timespec="seconds")
-                sauvegardes.append({"pseudo": p, "updated": maj, "data": data})
+                maj = getattr(b, "uploaded_at", None) or datetime.now(timezone.utc).isoformat(timespec="seconds")
+                if hasattr(maj, "isoformat"):
+                    maj = maj.isoformat(timespec="seconds")
+                sauvegardes.append({"pseudo": p, "updated": str(maj), "data": data})
             except Exception:
                 continue
     except Exception:
