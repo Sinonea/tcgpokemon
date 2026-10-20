@@ -14,7 +14,7 @@ app = FastAPI()
 TOKEN = os.environ.get("ADMIN_TOKEN") or "change-me-in-production"
 PSEUDO_RE = re.compile(r"^[a-z0-9_-]{2,20}$")
 MAX_BODY = 1_000_000
-SAVES_PREFIX = "saves/"
+SAVES_PREFIX = "/public/saves/"
 
 def is_admin(authorization: Optional[str]) -> bool:
     if not authorization:
