@@ -1,0 +1,1006 @@
+{
+    "set": "MegaEvolution",
+	"nom": "Méga-Évolution",
+	"serie": "Méga-Évolution",
+	"sortie": "26/09/2025",
+	"normales": 188,
+	"reverses": 122,
+	"promos": 11,
+    "cartes": [
+        {
+            "id": "001",
+            "name": "Bulbizarre",
+            "rarity": "Commune"
+        },
+        {
+            "id": "002",
+            "name": "Herbizarre",
+            "rarity": "Commune"
+        },
+        {
+            "id": "003",
+            "name": "Méga-Florizarre-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "004",
+            "name": "Noeunoeuf",
+            "rarity": "Commune"
+        },
+        {
+            "id": "005",
+            "name": "Noadkoko",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "006",
+            "name": "Saquedeneu",
+            "rarity": "Commune"
+        },
+        {
+            "id": "007",
+            "name": "Bouldeneu",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "008",
+            "name": "Germignon",
+            "rarity": "Commune"
+        },
+        {
+            "id": "009",
+            "name": "Macronium",
+            "rarity": "Commune"
+        },
+        {
+            "id": "010",
+            "name": "Méganium",
+            "rarity": "Rare"
+        },
+        {
+            "id": "011",
+            "name": "Caratroc",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "012",
+            "name": "Celebi",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "013",
+            "name": "Grainipiot",
+            "rarity": "Commune"
+        },
+        {
+            "id": "014",
+            "name": "Pifeuil",
+            "rarity": "Commune"
+        },
+        {
+            "id": "015",
+            "name": "Tengalice",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "016",
+            "name": "Ningale",
+            "rarity": "Commune"
+        },
+        {
+            "id": "017",
+            "name": "Ninjask",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "018",
+            "name": "Sinistrail",
+            "rarity": "Commune"
+        },
+        {
+            "id": "019",
+            "name": "Goupix",
+            "rarity": "Commune"
+        },
+        {
+            "id": "020",
+            "name": "Feunard",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "021",
+            "name": "Chamallot",
+            "rarity": "Commune"
+        },
+        {
+            "id": "022",
+            "name": "Méga-Camérupt-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "023",
+            "name": "Hélionceau",
+            "rarity": "Commune"
+        },
+        {
+            "id": "024",
+            "name": "Némélios",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "025",
+            "name": "Volcanion",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "026",
+            "name": "Flambino",
+            "rarity": "Commune"
+        },
+        {
+            "id": "027",
+            "name": "Lapyro",
+            "rarity": "Commune"
+        },
+        {
+            "id": "028",
+            "name": "Pyrobut",
+            "rarity": "Rare"
+        },
+        {
+            "id": "029",
+            "name": "Grillepattes",
+            "rarity": "Commune"
+        },
+        {
+            "id": "030",
+            "name": "Scolocendre",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "031",
+            "name": "Yuyu",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "032",
+            "name": "Démanta",
+            "rarity": "Commune"
+        },
+        {
+            "id": "033",
+            "name": "Écrapince",
+            "rarity": "Commune"
+        },
+        {
+            "id": "034",
+            "name": "Kyogre",
+            "rarity": "Rare"
+        },
+        {
+            "id": "035",
+            "name": "Blizzi",
+            "rarity": "Commune"
+        },
+        {
+            "id": "036",
+            "name": "Méga-Blizzaroi-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "037",
+            "name": "Flingouste",
+            "rarity": "Commune"
+        },
+        {
+            "id": "038",
+            "name": "Gamblast",
+            "rarity": "Rare"
+        },
+        {
+            "id": "039",
+            "name": "Larméléon",
+            "rarity": "Commune"
+        },
+        {
+            "id": "040",
+            "name": "Arrozard",
+            "rarity": "Commune"
+        },
+        {
+            "id": "041",
+            "name": "Lézargus",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "042",
+            "name": "Frissonille",
+            "rarity": "Commune"
+        },
+        {
+            "id": "043",
+            "name": "Beldeneige",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "044",
+            "name": "Bekaglaçon",
+            "rarity": "Commune"
+        },
+        {
+            "id": "045",
+            "name": "Magnéti",
+            "rarity": "Commune"
+        },
+        {
+            "id": "046",
+            "name": "Magnéton",
+            "rarity": "Commune"
+        },
+        {
+            "id": "047",
+            "name": "Magnézone",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "048",
+            "name": "Raikou",
+            "rarity": "Rare"
+        },
+        {
+            "id": "049",
+            "name": "Dynavolt",
+            "rarity": "Commune"
+        },
+        {
+            "id": "050",
+            "name": "Méga-Élecsprint-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "051",
+            "name": "Pachirisu",
+            "rarity": "Commune"
+        },
+        {
+            "id": "052",
+            "name": "Galvaran",
+            "rarity": "Commune"
+        },
+        {
+            "id": "053",
+            "name": "Iguolta",
+            "rarity": "Commune"
+        },
+        {
+            "id": "054",
+            "name": "Abra",
+            "rarity": "Commune"
+        },
+        {
+            "id": "055",
+            "name": "Kadabra",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "056",
+            "name": "Alakazam",
+            "rarity": "Rare"
+        },
+        {
+            "id": "057",
+            "name": "Lippoutou",
+            "rarity": "Commune"
+        },
+        {
+            "id": "058",
+            "name": "Tarsal",
+            "rarity": "Commune"
+        },
+        {
+            "id": "059",
+            "name": "Kirlia",
+            "rarity": "Commune"
+        },
+        {
+            "id": "060",
+            "name": "Méga-Gardevoir-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "061",
+            "name": "Munja",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "062",
+            "name": "Spoink",
+            "rarity": "Commune"
+        },
+        {
+            "id": "063",
+            "name": "Groret",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "064",
+            "name": "Xerneas",
+            "rarity": "Rare"
+        },
+        {
+            "id": "065",
+            "name": "Toutombe",
+            "rarity": "Commune"
+        },
+        {
+            "id": "066",
+            "name": "Tomberro",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "067",
+            "name": "Mordudor",
+            "rarity": "Commune"
+        },
+        {
+            "id": "068",
+            "name": "Sabelette",
+            "rarity": "Commune"
+        },
+        {
+            "id": "069",
+            "name": "Sablaireau",
+            "rarity": "Commune"
+        },
+        {
+            "id": "070",
+            "name": "Onix",
+            "rarity": "Commune"
+        },
+        {
+            "id": "071",
+            "name": "Débugant",
+            "rarity": "Commune"
+        },
+        {
+            "id": "072",
+            "name": "Makuhita",
+            "rarity": "Commune"
+        },
+        {
+            "id": "073",
+            "name": "Hariyama",
+            "rarity": "Rare"
+        },
+        {
+            "id": "074",
+            "name": "Séléroc",
+            "rarity": "Rare"
+        },
+        {
+            "id": "075",
+            "name": "Solaroc",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "076",
+            "name": "Riolu",
+            "rarity": "Commune"
+        },
+        {
+            "id": "077",
+            "name": "Méga-Lucario-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "078",
+            "name": "Cradopaud",
+            "rarity": "Commune"
+        },
+        {
+            "id": "079",
+            "name": "Coatox",
+            "rarity": "Commune"
+        },
+        {
+            "id": "080",
+            "name": "Marshadow",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "081",
+            "name": "Dolman",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "082",
+            "name": "Selutin",
+            "rarity": "Commune"
+        },
+        {
+            "id": "083",
+            "name": "Amassel",
+            "rarity": "Commune"
+        },
+        {
+            "id": "084",
+            "name": "Gigansel",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "085",
+            "name": "Colhomard",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "086",
+            "name": "Méga-Absol-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "087",
+            "name": "Spiritomb",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "088",
+            "name": "Yveltal",
+            "rarity": "Rare"
+        },
+        {
+            "id": "089",
+            "name": "Goupilou",
+            "rarity": "Commune"
+        },
+        {
+            "id": "090",
+            "name": "Roublenard",
+            "rarity": "Commune"
+        },
+        {
+            "id": "091",
+            "name": "Gribouraigne",
+            "rarity": "Commune"
+        },
+        {
+            "id": "092",
+            "name": "Tag-Tag",
+            "rarity": "Commune"
+        },
+        {
+            "id": "093",
+            "name": "Steelix",
+            "rarity": "Rare"
+        },
+        {
+            "id": "094",
+            "name": "Méga-Mysdibule-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "095",
+            "name": "Dialga",
+            "rarity": "Rare"
+        },
+        {
+            "id": "096",
+            "name": "Forgerette",
+            "rarity": "Commune"
+        },
+        {
+            "id": "097",
+            "name": "Forgella",
+            "rarity": "Commune"
+        },
+        {
+            "id": "098",
+            "name": "Forgelina",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "099",
+            "name": "Gromago",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "100",
+            "name": "Méga-Latias-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "101",
+            "name": "Latios",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "102",
+            "name": "Piafabec",
+            "rarity": "Commune"
+        },
+        {
+            "id": "103",
+            "name": "Rapasdepic",
+            "rarity": "Commune"
+        },
+        {
+            "id": "104",
+            "name": "Méga-Kangourex-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "105",
+            "name": "Cadoizo",
+            "rarity": "Com"
+        },
+        {
+            "id": "106",
+            "name": "Écrémeuh",
+            "rarity": "Commune"
+        },
+        {
+            "id": "107",
+            "name": "Laporeille",
+            "rarity": "Commune"
+        },
+        {
+            "id": "108",
+            "name": "Lockpin",
+            "rarity": "Commune"
+        },
+        {
+            "id": "109",
+            "name": "Manglouton",
+            "rarity": "Commune"
+        },
+        {
+            "id": "110",
+            "name": "Argouste",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "111",
+            "name": "Nounourson",
+            "rarity": "Commune"
+        },
+        {
+            "id": "112",
+            "name": "Chelours",
+            "rarity": "Commune"
+        },
+        {
+            "id": "113",
+            "name": "Espièglerie de Margie",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "114",
+            "name": "Ordres du Boss",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "115",
+            "name": "Échange d'Énergie",
+            "rarity": "Commune"
+        },
+        {
+            "id": "116",
+            "name": "Gong de Combat",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "117",
+            "name": "Forêt de Vitalité",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "118",
+            "name": "Défense de Fer",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "119",
+            "name": "Détermination de Lilie",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "120",
+            "name": "Négociation de Major Bob",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "121",
+            "name": "Méga Signal",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "122",
+            "name": "Jardin Mystère",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "123",
+            "name": "Dame du Centre Pokémon",
+            "rarity": "Commune"
+        },
+        {
+            "id": "124",
+            "name": "Puissance Premium Pro",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "125",
+            "name": "Super Bonbon",
+            "rarity": "Commune"
+        },
+        {
+            "id": "126",
+            "name": "Repousse",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "127",
+            "name": "Ruines Risquées",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "128",
+            "name": "Compteur de Temps Étrange",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "129",
+            "name": "Plage de Surf",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "130",
+            "name": "Échange",
+            "rarity": "Commune"
+        },
+        {
+            "id": "131",
+            "name": "Hyper Ball",
+            "rarity": "Commune"
+        },
+        {
+            "id": "132",
+            "name": "Compassion de Timmy",
+            "rarity": "Peu Commune"
+        },
+        {
+            "id": "133",
+            "name": "Bulbizarre",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "134",
+            "name": "Herbizarre",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "135",
+            "name": "Noadkoko",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "136",
+            "name": "Caratroc",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "137",
+            "name": "Ninjask",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "138",
+            "name": "Goupix",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "139",
+            "name": "Hélionceau",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "140",
+            "name": "Blizzi",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "141",
+            "name": "Gamblast",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "142",
+            "name": "Lézargus",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "143",
+            "name": "Galvaran",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "144",
+            "name": "Munja",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "145",
+            "name": "Tomberro",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "146",
+            "name": "Marshadow",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "147",
+            "name": "Gigansel",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "148",
+            "name": "Spiritomb",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "149",
+            "name": "Gribouraigne",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "150",
+            "name": "Steelix",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "151",
+            "name": "Piafabec",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "152",
+            "name": "Cadoizo",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "153",
+            "name": "Argouste",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "154",
+            "name": "Nounourson",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "155",
+            "name": "Méga-Florizarre-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "156",
+            "name": "Méga-Camérupt-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "157",
+            "name": "Méga-Blizzaroi-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "158",
+            "name": "Méga-Élecsprint-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "159",
+            "name": "Méga-Gardevoir-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "160",
+            "name": "Méga-Lucario-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "161",
+            "name": "Méga-Absol-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "162",
+            "name": "Méga-Mysdibule-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "163",
+            "name": "Méga-Latias-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "164",
+            "name": "Méga-Kangourex-ex",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "165",
+            "name": "Espièglerie de Margie",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "166",
+            "name": "Ballon",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "167",
+            "name": "Poffin Copain-Copain",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "168",
+            "name": "Gong de Combat",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "169",
+            "name": "Détermination de Lilie",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "170",
+            "name": "Négociation de Major Bob",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "171",
+            "name": "Méga Signal",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "172",
+            "name": "Jardin Mystère",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "173",
+            "name": "Civière Nocturne",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "174",
+            "name": "Puissance Premium Pro",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "175",
+            "name": "Super Bonbon",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "176",
+            "name": "Compassion de Timmy",
+            "rarity": "Ultra Rare"
+        },
+        {
+            "id": "177",
+            "name": "Méga-Florizarre-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "178",
+            "name": "Méga-Gardevoir-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "179",
+            "name": "Méga-Lucario-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "180",
+            "name": "Méga-Absol-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "181",
+            "name": "Méga-Latias-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "182",
+            "name": "Méga-Kangourex-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "183",
+            "name": "Espièglerie de Margie",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "184",
+            "name": "Détermination de Lilie",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "185",
+            "name": "Négociation de Major Bob",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "186",
+            "name": "Compassion de Timmy",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "187",
+            "name": "Méga-Gardevoir-ex",
+            "rarity": "Méga Hyper Rare"
+        },
+        {
+            "id": "188",
+            "name": "Méga-Lucario-ex",
+            "rarity": "Méga Hyper Rare"
+        },
+        {
+            "id": "Promo_001",
+            "name": "Méganium",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_002",
+            "name": "Lézargus",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_003",
+            "name": "Alakazam",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_004",
+            "name": "Séléroc",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_009",
+            "name": "Alakazam",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_010",
+            "name": "Riolu",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_011",
+            "name": "Méga-Latias-ex",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_012",
+            "name": "Méga-Lucario-ex",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_013",
+            "name": "Méga-Florizarre-ex",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_025",
+            "name": "Méga-Kangourex-ex",
+            "rarity": "Promo"
+        },
+        {
+            "id": "Promo_069",
+            "name": "Germignon",
+            "rarity": "Promo"
+        }
+    ]
+}

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administration – sauvegardes</title>
+<style>
+:root{--bg:#17143a;--panel:#221e52;--line:#3a3580;--text:#f1efff;--muted:#a9a5d6;--gold:#ffcb3d;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,#2f2a72,var(--bg) 60%);color:var(--text);
+  font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;line-height:1.5}
+main{max-width:980px;margin:0 auto;padding:24px 16px 60px}
+h1{font-size:1.6rem;margin:0 0 16px}
+form,.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+input{flex:1;min-width:200px;color:var(--text);background:#17143a;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit}
+.btn{font:inherit;font-weight:700;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 18px;cursor:pointer}
+.btn:hover{border-color:var(--gold)}
+#msg{min-height:1.4em;color:#ffb86b;margin:0 0 12px}
+#sum{color:var(--muted);font-size:.9rem}
+.wrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+tr:last-child td{border-bottom:0}
+summary{cursor:pointer;font-weight:700}
+.sets div{margin-bottom:2px}
+ul.cartes{columns:2 200px;list-style:none;padding:0;margin:8px 0 4px;font-size:.82rem;color:var(--muted)}
+h4{margin:10px 0 0;font-size:.85rem}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <h1>Administration – sauvegardes des joueurs</h1>
+
+  <form id="f">
+    <input id="token" type="password" autocomplete="off" placeholder="Jeton administrateur">
+    <button class="btn" type="submit">Charger</button>
+  </form>
+  <p id="msg"></p>
+
+  <div id="out" hidden>
+    <div class="bar">
+      <input id="q" type="text" placeholder="Filtrer par pseudo">
+      <button id="export" class="btn" type="button">Exporter tout (JSON)</button>
+    </div>
+    <p id="sum"></p>
+    <div class="wrap">
+      <table>
+        <thead><tr><th>Joueur</th><th>Dernière sauvegarde</th><th>Progression</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
+
+let all = [], infos = {};
+
+async function charger(token) {
+  const r = await fetch('api/admin/saves', { headers: { Authorization: 'Bearer ' + token }, cache: 'no-store' });
+  if (r.status === 403) throw new Error('Jeton refusé.');
+  if (!r.ok) throw new Error('Erreur du serveur (HTTP ' + r.status + ').');
+  all = (await r.json()).saves || [];
+  // noms et nombre total de cartes de chaque extension, pour afficher « 87 / 188 »
+  const ids = [...new Set(all.flatMap(s => Object.keys((s.data && s.data.sets) || {})))];
+  await Promise.all(ids.map(async id => {
+    try {
+      const c = await (await fetch(`data/${id}/cartes.json`)).json();
+      infos[id] = { nom: c.nom || id, total: c.cartes.length, byId: Object.fromEntries(c.cartes.map(x => [String(x.id), x])) };
+    } catch (e) { /* extension sans cartes.json : on affiche l'identifiant */ }
+  }));
+  afficher();
+}
+
+function afficher() {
+  const q = $('#q').value.trim().toLowerCase();
+  const liste = all.filter(s => s.pseudo.includes(q));
+  $('#sum').textContent = `${liste.length} joueur${liste.length > 1 ? 's' : ''}` + (q ? ` sur ${all.length}` : '');
+  const tb = $('#rows'); tb.replaceChildren();
+  for (const s of liste) {
+    const tr = el('tr'), joueur = el('td'), date = el('td', '', new Date(s.updated).toLocaleString('fr-FR')), prog = el('td', 'sets');
+    const det = el('details'); det.append(el('summary', '', s.pseudo));
+    for (const [id, d] of Object.entries((s.data && s.data.sets) || {})) {
+      const info = infos[id], cartes = d.cartes || {}, ids = Object.keys(cartes).filter(k => cartes[k] > 0).sort();
+      prog.append(el('div', '', `${info ? info.nom : id} : ${d.boosters | 0} boosters · ${ids.length}${info ? ' / ' + info.total : ''} cartes`));
+      det.append(el('h4', '', info ? info.nom : id));
+      const ul = el('ul', 'cartes');
+      ids.forEach(k => ul.append(el('li', '', `${k} · ${info && info.byId[k] ? info.byId[k].name : ''} × ${cartes[k]}`)));
+      det.append(ul);
+    }
+    joueur.append(det); tr.append(joueur, date, prog); tb.append(tr);
+  }
+}
+
+$('#f').onsubmit = async e => {
+  e.preventDefault();
+  $('#msg').textContent = '';
+  try { await charger($('#token').value); $('#out').hidden = false; }
+  catch (err) { $('#msg').textContent = err.message; $('#out').hidden = true; }
+};
+$('#q').oninput = afficher;
+$('#export').onclick = () => {
+  const a = el('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify({ saves: all }, null, 2)], { type: 'application/json' }));
+  a.download = 'sauvegardes.json'; a.click();
+};
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import os
 import re
 
-DOSSIER = "NuitNoire"   # adaptez si votre dossier s'appelle autrement
+DOSSIER = "liste"   # adaptez si votre dossier s'appelle autrement
 SIMULATION = False       # True = affiche seulement, False = renomme vraiment
 
 motif = re.compile(r"^.*?_(\d+)(\.\w+)$")

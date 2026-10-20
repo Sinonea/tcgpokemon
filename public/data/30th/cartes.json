@@ -1,0 +1,951 @@
+{
+	"set": "30th",
+	"nom": "30ᵉ Anniversaire",
+	"serie": "Méga-Évolution",
+	"sortie": "16/09/2026",
+	"normales": 188,
+	"reverses": 0,
+	"promos": 0,
+    "cartes": [
+        {
+            "id": "001",
+            "name": "Noeunoeuf",
+            "rarity": "Commune"
+        },
+        {
+            "id": "002",
+            "name": "Noadkoko d'Alola",
+            "rarity": "Commune"
+        },
+        {
+            "id": "003",
+            "name": "Muciole",
+            "rarity": "Commune"
+        },
+        {
+            "id": "004",
+            "name": "Lumivole",
+            "rarity": "Commune"
+        },
+        {
+            "id": "005",
+            "name": "Tropius",
+            "rarity": "Commune"
+        },
+        {
+            "id": "006",
+            "name": "Ceribou",
+            "rarity": "Commune"
+        },
+        {
+            "id": "007",
+            "name": "Ceriflor",
+            "rarity": "Commune"
+        },
+        {
+            "id": "008",
+            "name": "Prismillon",
+            "rarity": "Commune"
+        },
+        {
+            "id": "009",
+            "name": "Goupix",
+            "rarity": "Commune"
+        },
+        {
+            "id": "010",
+            "name": "Feunard",
+            "rarity": "Commune"
+        },
+        {
+            "id": "011",
+            "name": "Sulfura",
+            "rarity": "Commune"
+        },
+        {
+            "id": "012",
+            "name": "Ho-Oh",
+            "rarity": "Rare"
+        },
+        {
+            "id": "013",
+            "name": "Victini",
+            "rarity": "Commune"
+        },
+        {
+            "id": "014",
+            "name": "Reshiram",
+            "rarity": "Rare"
+        },
+        {
+            "id": "015",
+            "name": "Chochodile-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "016",
+            "name": "Ramoloss",
+            "rarity": "Commune"
+        },
+        {
+            "id": "017",
+            "name": "Lokhlass",
+            "rarity": "Commune"
+        },
+        {
+            "id": "018",
+            "name": "Artikodin",
+            "rarity": "Commune"
+        },
+        {
+            "id": "019",
+            "name": "Kyogre",
+            "rarity": "Rare"
+        },
+        {
+            "id": "020",
+            "name": "Palkia",
+            "rarity": "Rare"
+        },
+        {
+            "id": "021",
+            "name": "Amphinobi-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "022",
+            "name": "Froussardine",
+            "rarity": "Commune"
+        },
+        {
+            "id": "023",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "024",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "025",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "026",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "027",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "028",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "029",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "030",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "031",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "032",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "033",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "034",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "035",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "036",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "037",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "038",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "039",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "040",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "041",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "042",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "043",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "044",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "045",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "046",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "047",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "048",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "049",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "050",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "051",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "052",
+            "name": "Pikachu",
+            "rarity": "Rare Pikachu"
+        },
+        {
+            "id": "053",
+            "name": "Pikachu-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "054",
+            "name": "Pikachu-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "055",
+            "name": "Électhor",
+            "rarity": "Commune"
+        },
+        {
+            "id": "056",
+            "name": "Zekrom",
+            "rarity": "Rare"
+        },
+        {
+            "id": "057",
+            "name": "Zeraora",
+            "rarity": "Commune"
+        },
+        {
+            "id": "058",
+            "name": "Toxizap",
+            "rarity": "Commune"
+        },
+        {
+            "id": "059",
+            "name": "Salarsen",
+            "rarity": "Commune"
+        },
+        {
+            "id": "060",
+            "name": "Salarsen",
+            "rarity": "Commune"
+        },
+        {
+            "id": "061",
+            "name": "Morpeko",
+            "rarity": "Commune"
+        },
+        {
+            "id": "062",
+            "name": "Miraidon",
+            "rarity": "Rare"
+        },
+        {
+            "id": "063",
+            "name": "Mewtwo",
+            "rarity": "Rare"
+        },
+        {
+            "id": "064",
+            "name": "Mewtwo-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "065",
+            "name": "Mew",
+            "rarity": "Rare"
+        },
+        {
+            "id": "066",
+            "name": "Mew-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "067",
+            "name": "Marill",
+            "rarity": "Commune"
+        },
+        {
+            "id": "068",
+            "name": "Azumarill",
+            "rarity": "Commune"
+        },
+        {
+            "id": "069",
+            "name": "Mentali",
+            "rarity": "Commune"
+        },
+        {
+            "id": "070",
+            "name": "Mentali-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "071",
+            "name": "Nymphali-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "072",
+            "name": "Zarbi",
+            "rarity": "Commune"
+        },
+        {
+            "id": "073",
+            "name": "Baudrive",
+            "rarity": "Commune"
+        },
+        {
+            "id": "074",
+            "name": "Cresselia",
+            "rarity": "Commune"
+        },
+        {
+            "id": "075",
+            "name": "Lugulabre",
+            "rarity": "Commune"
+        },
+        {
+            "id": "076",
+            "name": "Xerneas",
+            "rarity": "Rare"
+        },
+        {
+            "id": "077",
+            "name": "Guérilande",
+            "rarity": "Commune"
+        },
+        {
+            "id": "078",
+            "name": "Cosmog",
+            "rarity": "Commune"
+        },
+        {
+            "id": "079",
+            "name": "Cosmovum",
+            "rarity": "Commune"
+        },
+        {
+            "id": "080",
+            "name": "Lunala",
+            "rarity": "Rare"
+        },
+        {
+            "id": "081",
+            "name": "Mordudor",
+            "rarity": "Commune"
+        },
+        {
+            "id": "082",
+            "name": "Groudon",
+            "rarity": "Rare"
+        },
+        {
+            "id": "083",
+            "name": "Lucario",
+            "rarity": "Commune"
+        },
+        {
+            "id": "084",
+            "name": "Crapustule",
+            "rarity": "Commune"
+        },
+        {
+            "id": "085",
+            "name": "Lougaroc",
+            "rarity": "Commune"
+        },
+        {
+            "id": "086",
+            "name": "Koraidon",
+            "rarity": "Rare"
+        },
+        {
+            "id": "087",
+            "name": "Nidoran♀",
+            "rarity": "Commune"
+        },
+        {
+            "id": "088",
+            "name": "Nidorina",
+            "rarity": "Commune"
+        },
+        {
+            "id": "089",
+            "name": "Miaouss d'Alola",
+            "rarity": "Commune"
+        },
+        {
+            "id": "090",
+            "name": "Ectoplasma-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "091",
+            "name": "Noctali",
+            "rarity": "Commune"
+        },
+        {
+            "id": "092",
+            "name": "Noctali-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "093",
+            "name": "Cornèbre",
+            "rarity": "Commune"
+        },
+        {
+            "id": "094",
+            "name": "Baggiguane",
+            "rarity": "Commune"
+        },
+        {
+            "id": "095",
+            "name": "Zorua",
+            "rarity": "Commune"
+        },
+        {
+            "id": "096",
+            "name": "Zoroark",
+            "rarity": "Commune"
+        },
+        {
+            "id": "097",
+            "name": "Solochi",
+            "rarity": "Commune"
+        },
+        {
+            "id": "098",
+            "name": "Diamat",
+            "rarity": "Commune"
+        },
+        {
+            "id": "099",
+            "name": "Trioxhydre",
+            "rarity": "Commune"
+        },
+        {
+            "id": "100",
+            "name": "Yveltal",
+            "rarity": "Rare"
+        },
+        {
+            "id": "101",
+            "name": "Miaouss de Galar",
+            "rarity": "Commune"
+        },
+        {
+            "id": "102",
+            "name": "Jirachi-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "103",
+            "name": "Dialga",
+            "rarity": "Rare"
+        },
+        {
+            "id": "104",
+            "name": "Noacier",
+            "rarity": "Commune"
+        },
+        {
+            "id": "105",
+            "name": "Solgaleo",
+            "rarity": "Rare"
+        },
+        {
+            "id": "106",
+            "name": "Zacian",
+            "rarity": "Rare"
+        },
+        {
+            "id": "107",
+            "name": "Zamazenta",
+            "rarity": "Rare"
+        },
+        {
+            "id": "108",
+            "name": "Gromago",
+            "rarity": "Commune"
+        },
+        {
+            "id": "109",
+            "name": "Drattak-ex",
+            "rarity": "Double Rare"
+        },
+        {
+            "id": "110",
+            "name": "Bébécaille",
+            "rarity": "Commune"
+        },
+        {
+            "id": "111",
+            "name": "Écaïd",
+            "rarity": "Commune"
+        },
+        {
+            "id": "112",
+            "name": "Ékaïser",
+            "rarity": "Commune"
+        },
+        {
+            "id": "113",
+            "name": "Miaouss",
+            "rarity": "Commune"
+        },
+        {
+            "id": "114",
+            "name": "Kangourex",
+            "rarity": "Commune"
+        },
+        {
+            "id": "115",
+            "name": "Métamorph",
+            "rarity": "Commune"
+        },
+        {
+            "id": "116",
+            "name": "Évoli",
+            "rarity": "Commune"
+        },
+        {
+            "id": "117",
+            "name": "Évoli",
+            "rarity": "Commune"
+        },
+        {
+            "id": "118",
+            "name": "Évoli",
+            "rarity": "Commune"
+        },
+        {
+            "id": "119",
+            "name": "Ronflex",
+            "rarity": "Commune"
+        },
+        {
+            "id": "120",
+            "name": "Toudoudou",
+            "rarity": "Commune"
+        },
+        {
+            "id": "121",
+            "name": "Lugia",
+            "rarity": "Rare"
+        },
+        {
+            "id": "122",
+            "name": "Zorua de Hisui",
+            "rarity": "Commune"
+        },
+        {
+            "id": "123",
+            "name": "Zoroark de Hisui",
+            "rarity": "Commune"
+        },
+        {
+            "id": "124",
+            "name": "Météno",
+            "rarity": "Commune"
+        },
+        {
+            "id": "125",
+            "name": "Famignol",
+            "rarity": "Commune"
+        },
+        {
+            "id": "126",
+            "name": "Poké Registre",
+            "rarity": "Commune"
+        },
+        {
+            "id": "127",
+            "name": "Échange",
+            "rarity": "Commune"
+        },
+        {
+            "id": "128",
+            "name": "Hyper Ball",
+            "rarity": "Commune"
+        },
+        {
+            "id": "129",
+            "name": "Noadkoko d'Alola",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "130",
+            "name": "Sulfura",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "131",
+            "name": "Lokhlass",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "132",
+            "name": "Artikodin",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "133",
+            "name": "Électhor",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "134",
+            "name": "Salarsen",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "135",
+            "name": "Morpeko",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "136",
+            "name": "Baudrive",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "137",
+            "name": "Lugulabre",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "138",
+            "name": "Lougaroc",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "139",
+            "name": "Miaouss d'Alola",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "140",
+            "name": "Baggiguane",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "141",
+            "name": "Miaouss de Galar",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "142",
+            "name": "Gromago",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "143",
+            "name": "Ékaïser",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "144",
+            "name": "Miaouss",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "145",
+            "name": "Zorua de Hisui",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "146",
+            "name": "Famignol",
+            "rarity": "Illustration Rare"
+        },
+        {
+            "id": "147",
+            "name": "Chochodile-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "148",
+            "name": "Amphinobi-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "149",
+            "name": "Pikachu-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "150",
+            "name": "Pikachu-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "151",
+            "name": "Mewtwo-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "152",
+            "name": "Mew-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "153",
+            "name": "Nymphali-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "154",
+            "name": "Ectoplasma-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "155",
+            "name": "Jirachi-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "156",
+            "name": "Drattak-ex",
+            "rarity": "Illustration Spéciale Rare"
+        },
+        {
+            "id": "157",
+            "name": "Mewtwo-ex",
+            "rarity": "Rare Futuriste"
+        },
+        {
+            "id": "158",
+            "name": "Mew-ex",
+            "rarity": "Rare Futuriste"
+        },
+        {
+            "id": "CC001",
+            "name": "Dracaufeu",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC002",
+            "name": "Delcatty",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC003",
+            "name": "Metalosse",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC004",
+            "name": "Genesect EX",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC005",
+            "name": "Ondine",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC006",
+            "name": "Tyranocif obscur",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC007",
+            "name": "Farfuret",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC008",
+            "name": "Pikachu et Zekrom GX",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC009",
+            "name": "Amphinobi TURBO",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC010",
+            "name": "Créhelf",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC011",
+            "name": "Nostenfert G",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC012",
+            "name": "Raikou",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC013",
+            "name": "Mouscoto GX",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC014",
+            "name": "Pikachu",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC015",
+            "name": "Rondoudou d'Erika",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC016",
+            "name": "Rayquaza EX",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC017",
+            "name": "Solgaleo GX",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC018",
+            "name": "Ectoplasma",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC019",
+            "name": "Darkrai & Cresselia LÉGENDE",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC020",
+            "name": "Darkrai & Cresselia LÉGENDE",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC021",
+            "name": "N",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC022",
+            "name": "Palkia",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC023",
+            "name": "M-Gardevoir EX",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC024",
+            "name": "Celebi brillant",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC025",
+            "name": "Cizayox ex",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC026",
+            "name": "Mew-VMAX",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC027",
+            "name": "Arceus-VSTAR",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC028",
+            "name": "Zacian-V",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC029",
+            "name": "Lugia",
+            "rarity": "Collection Classique"
+        },
+        {
+            "id": "CC030",
+            "name": "Magicarpe",
+            "rarity": "Collection Classique"
+        }
+    ]
+}

@@ -3,7 +3,7 @@ import time
 import requests
 from urllib.parse import urlparse, unquote
 
-FICHIERS = ["30th.txt", "NuitNoire.txt"]
+FICHIERS = ["liste.txt"]
 headers = {"User-Agent": "Mozilla/5.0"}
 
 session = requests.Session()

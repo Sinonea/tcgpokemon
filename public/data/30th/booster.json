@@ -1,0 +1,86 @@
+{
+    "set": "30th",
+	"energy": 3,
+    "booster": {
+        "slots": [
+            {
+                "position": 1,
+                "rarities": {
+                    "Rare Pikachu": 100
+                }
+            },
+            {
+                "position": 2,
+                "rarities": {
+                    "Commune": 100
+                }
+            },
+            {
+                "position": 3,
+                "rarities": {
+                    "Commune": 100
+                }
+            },
+            {
+                "position": 4,
+                "rarities": {
+                    "Commune": 90,
+                    "Collection Classique": 10
+                }
+            },
+            {
+                "position": 5,
+                "rarities": {
+                    "Rare": 50,
+                    "Double Rare": 25,
+                    "Illustration Rare": 16.7,
+                    "Illustration Spéciale Rare": 5,
+                    "Commune": 2.4,
+                    "Rare Futuriste": 0.97
+                }
+            }
+        ],
+		"rates": [
+			{
+				"rarity": "Commune",
+				"cartes": 68,
+				"chance": 1
+			},
+			{
+				"rarity": "Rare",
+				"cartes": 18,
+				"chance": 2
+			},
+			{
+				"rarity": "Rare Pikachu",
+				"cartes": 30,
+				"chance": 1
+			},
+			{
+				"rarity": "Double Rare",
+				"cartes": 12,
+				"chance": 4
+			},
+			{
+				"rarity": "Collection Classique",
+				"cartes": 30,
+				"chance": 10
+			},
+			{
+				"rarity": "Illustration Rare",
+				"cartes": 18,
+				"chance": 6
+			},
+			{
+				"rarity": "Illustration Spéciale Rare",
+				"cartes": 10,
+				"chance": 20
+			},
+			{
+				"rarity": "Rare Futuriste",
+				"cartes": 2,
+				"chance": 103
+			}
+		]
+    }
+}
