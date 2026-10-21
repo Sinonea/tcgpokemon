@@ -27,6 +27,8 @@ summary{cursor:pointer;font-weight:700}
 ul.cartes{columns:2 200px;list-style:none;padding:0;margin:8px 0 4px;font-size:.82rem;color:var(--muted)}
 h4{margin:10px 0 0;font-size:.85rem}
 [hidden]{display:none!important}
+.btn.danger{padding:4px 14px;font-size:.82rem;color:#ff9aa8;border-color:#7a3445}
+.btn.danger:hover{border-color:#ff6b81}
 </style>
 </head>
 <body>
@@ -47,7 +49,7 @@ h4{margin:10px 0 0;font-size:.85rem}
     <p id="sum"></p>
     <div class="wrap">
       <table>
-        <thead><tr><th>Joueur</th><th>Dernière sauvegarde</th><th>Progression</th></tr></thead>
+        <thead><tr><th>Joueur</th><th>Dernière sauvegarde</th><th>Progression</th><th></th></tr></thead>
         <tbody id="rows"></tbody>
       </table>
     </div>
@@ -60,9 +62,10 @@ import { URLS, decle, getJSON } from './js/data.js';
 const $ = s => document.querySelector(s);
 const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
 
-let all = [], infos = {};
+let all = [], infos = {}, jeton = '';
 
 async function charger(token) {
+  jeton = token;
   const r = await fetch(URLS.admin, { headers: { Authorization: 'Bearer ' + token }, cache: 'no-store' });
   if (r.status === 403) throw new Error('Jeton refusé.');
   if (!r.ok) throw new Error('Erreur du serveur (HTTP ' + r.status + ').');
@@ -96,8 +99,24 @@ function afficher() {
       ids.forEach(i => ul.append(el('li', '', `${i} · ${info && info.byId[i] ? info.byId[i].name : ''} × ${cartes[i]}`)));
       det.append(ul);
     }
-    joueur.append(det); tr.append(joueur, date, prog); tb.append(tr);
+    const act = el('td'), bt = el('button', 'btn danger', 'Supprimer');
+    bt.type = 'button'; bt.onclick = () => supprimer(s.pseudo); act.append(bt);
+    joueur.append(det); tr.append(joueur, date, prog, act); tb.append(tr);
   }
+}
+
+async function supprimer(pseudo) {
+  const s = all.find(x => x.pseudo === pseudo);
+  const n = Object.values((s && s.data && s.data.sets) || {}).reduce((t, d) => t + (d.boosters | 0), 0);
+  if (!confirm(`Supprimer définitivement le joueur « ${pseudo} » (${n} booster${n > 1 ? 's' : ''} ouvert${n > 1 ? 's' : ''}) et toute sa progression ?`)) return;
+  $('#msg').textContent = '';
+  try {
+    const r = await fetch(URLS.adminJoueur(pseudo), { method: 'DELETE', headers: { Authorization: 'Bearer ' + jeton } });
+    if (r.status === 403) throw new Error('Jeton refusé.');
+    if (!r.ok && r.status !== 404) throw new Error('Suppression impossible (HTTP ' + r.status + ').');   // 404 : déjà supprimé
+    all = all.filter(x => x.pseudo !== pseudo);
+    afficher();
+  } catch (err) { $('#msg').textContent = err.message; }
 }
 
 $('#f').onsubmit = async e => {

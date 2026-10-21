@@ -22,6 +22,7 @@ export const URLS = {
   image:   (bloc, set, id)   => `assets/images/${seg(bloc)}/${seg(set)}/${seg(id)}.webp`,
   save:    pseudo            => `api/save/${seg(pseudo)}`,        // GET : progression du joueur (404 si aucune) ; PUT : la remplace
   admin:   'api/admin/saves',                                     // GET avec « Authorization: Bearer <jeton> »
+  adminJoueur: pseudo => `api/admin/saves/${seg(pseudo)}`,        // DELETE (même en-tête) : supprime un joueur
 };
 
 export const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();

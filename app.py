@@ -94,3 +94,21 @@ async def admin_saves(authorization: Optional[str] = Header(None)):
 
     sauvegardes.sort(key=lambda s: s["updated"], reverse=True)
     return JSONResponse({"saves": sauvegardes})
+
+@app.delete("/api/admin/saves/{pseudo}")
+async def admin_delete_save(pseudo: str, authorization: Optional[str] = Header(None)):
+    if not is_admin(authorization):
+        return JSONResponse({"erreur": "accès refusé"}, status_code=403)
+
+    p = pseudo.lower()
+    if not valid_pseudo(p):
+        return JSONResponse({"erreur": "pseudo invalide"}, status_code=400)
+
+    pathname = f"{SAVES_PREFIX}{p}.json"
+    try:
+        await blob.head_blob(pathname)  # delete_blob réussit même si le blob n'existe pas : on vérifie d'abord
+    except blob.BlobNotFoundError:
+        return JSONResponse({"erreur": "joueur introuvable"}, status_code=404)
+
+    await blob.delete_blob(pathname)
+    return Response(status_code=204)
