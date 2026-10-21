@@ -54,24 +54,28 @@ h4{margin:10px 0 0;font-size:.85rem}
   </div>
 </main>
 
-<script>
+<script type="module">
+import { URLS, decle, getJSON } from './js/data.js';
+
 const $ = s => document.querySelector(s);
 const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
 
 let all = [], infos = {};
 
 async function charger(token) {
-  const r = await fetch('api/admin/saves', { headers: { Authorization: 'Bearer ' + token }, cache: 'no-store' });
+  const r = await fetch(URLS.admin, { headers: { Authorization: 'Bearer ' + token }, cache: 'no-store' });
   if (r.status === 403) throw new Error('Jeton refusé.');
   if (!r.ok) throw new Error('Erreur du serveur (HTTP ' + r.status + ').');
   all = (await r.json()).saves || [];
-  // noms et nombre total de cartes de chaque extension, pour afficher « 87 / 188 »
-  const ids = [...new Set(all.flatMap(s => Object.keys((s.data && s.data.sets) || {})))];
-  await Promise.all(ids.map(async id => {
+  // nom et nombre total de cartes de chaque set, pour afficher « 87 / 120 » (clé de sauvegarde : « bloc/set »)
+  const cles = [...new Set(all.flatMap(s => Object.keys((s.data && s.data.sets) || {})))];
+  await Promise.all(cles.map(async k => {
+    const [b, set] = decle(k);
+    if (b === null) return;                                    // ancienne clé sans bloc : affichée telle quelle
     try {
-      const c = await (await fetch(`data/${id}/cartes.json`)).json();
-      infos[id] = { nom: c.nom || id, total: c.cartes.length, byId: Object.fromEntries(c.cartes.map(x => [String(x.id), x])) };
-    } catch (e) { /* extension sans cartes.json : on affiche l'identifiant */ }
+      const c = await getJSON(URLS.cartes(b, set));
+      infos[k] = { nom: set, total: c.cartes.length, byId: Object.fromEntries(c.cartes.map(x => [String(x.id), x])) };
+    } catch (e) { /* set sans cartes.json : on affiche la clé */ }
   }));
   afficher();
 }
@@ -84,12 +88,12 @@ function afficher() {
   for (const s of liste) {
     const tr = el('tr'), joueur = el('td'), date = el('td', '', new Date(s.updated).toLocaleString('fr-FR')), prog = el('td', 'sets');
     const det = el('details'); det.append(el('summary', '', s.pseudo));
-    for (const [id, d] of Object.entries((s.data && s.data.sets) || {})) {
-      const info = infos[id], cartes = d.cartes || {}, ids = Object.keys(cartes).filter(k => cartes[k] > 0).sort();
-      prog.append(el('div', '', `${info ? info.nom : id} : ${d.boosters | 0} boosters · ${ids.length}${info ? ' / ' + info.total : ''} cartes`));
-      det.append(el('h4', '', info ? info.nom : id));
+    for (const [k, d] of Object.entries((s.data && s.data.sets) || {})) {
+      const info = infos[k], cartes = d.cartes || {}, ids = Object.keys(cartes).filter(i => cartes[i] > 0).sort();
+      prog.append(el('div', '', `${info ? info.nom : k} : ${d.boosters | 0} boosters · ${ids.length}${info ? ' / ' + info.total : ''} cartes`));
+      det.append(el('h4', '', info ? info.nom : k));
       const ul = el('ul', 'cartes');
-      ids.forEach(k => ul.append(el('li', '', `${k} · ${info && info.byId[k] ? info.byId[k].name : ''} × ${cartes[k]}`)));
+      ids.forEach(i => ul.append(el('li', '', `${i} · ${info && info.byId[i] ? info.byId[i].name : ''} × ${cartes[i]}`)));
       det.append(ul);
     }
     joueur.append(det); tr.append(joueur, date, prog); tb.append(tr);

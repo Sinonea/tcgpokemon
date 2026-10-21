@@ -79,6 +79,9 @@ input[type=file],input[type=text]{display:block;width:100%;margin-top:4px;color:
 #who{text-align:center;color:var(--muted);margin:0 0 22px}
 #who b{color:var(--text)}
 #who .btn{padding:3px 12px;font-size:.85rem;margin-left:8px}
+.tab.off{opacity:.45}
+#blocs{margin-bottom:12px}
+h4{margin:12px 0 0;font-size:.85rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -95,144 +98,101 @@ input[type=file],input[type=text]{display:block;width:100%;margin-top:4px;color:
   </section>
 
   <div id="game" hidden>
-  <p id="who">Joueur : <b id="whoName"></b><button id="logout" class="btn" type="button">Changer de joueur</button></p>
+    <p id="who">Joueur : <b id="whoName"></b><button id="logout" class="btn" type="button">Changer de joueur</button></p>
 
-  <div id="tabs" class="tabs" role="group" aria-label="Extension" hidden></div>
-  <p id="status" hidden></p>
+    <div id="blocs" class="tabs" role="group" aria-label="Bloc" hidden></div>
+    <div id="tabs" class="tabs" role="group" aria-label="Set"></div>
+    <p id="status" hidden></p>
 
-  <div class="stage">
-    <button id="pack" class="pack" type="button" disabled>
-      <span id="packSerie" class="small"></span>
-      <span id="packNom" class="big"></span>
-      <span class="small">Booster</span>
-    </button>
-    <div class="actions">
-      <button id="revealAll" class="btn" type="button" hidden>Tout retourner</button>
+    <div class="stage">
+      <button id="pack" class="pack" type="button" disabled>
+        <span id="packSerie" class="small"></span>
+        <span id="packNom" class="big"></span>
+        <span class="small">Booster</span>
+      </button>
+      <div class="actions">
+        <button id="revealAll" class="btn" type="button" hidden>Tout retourner</button>
+      </div>
+      <div id="cards" aria-live="polite"></div>
     </div>
-    <div id="cards" aria-live="polite"></div>
-  </div>
 
-  <p id="count"></p>
-  <div id="tally" class="tally"></div>
-  <p id="saveStatus"></p>
+    <p id="count"></p>
+    <div id="tally" class="tally"></div>
+    <p id="saveStatus"></p>
 
-  <details id="coll">
-    <summary id="collSum">Ma collection</summary>
-    <ul id="collList"></ul>
-  </details>
+    <details id="coll">
+      <summary id="collSum">Ma collection</summary>
+      <ul id="collList"></ul>
+    </details>
 
-  <details id="setup">
-    <summary>Probabilités du booster</summary>
-    <ul id="slotsInfo"></ul>
-  </details>
+    <details id="setup">
+      <summary>Probabilités du booster</summary>
+      <h4>Par carte du booster</h4>
+      <ul id="slotsInfo"></ul>
+      <h4 id="ratesTitle">Par rareté</h4>
+      <ul id="ratesInfo"></ul>
+    </details>
   </div>
 </main>
 
-<script>
+<script type="module">
+import { URLS, norm, cle, loadBlocs, loadSets, loadSet } from './js/data.js';
+
 const $ = s => document.querySelector(s);
 const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
-const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 
-/* ---------- Configuration : adaptez ces chemins à votre serveur ---------- */
-const SET_IDS = [
-  'MegaEvolution',
-  'FlammesFantasmagoriques',
-  'HerosTranscendants',
-  'EquilibreParfait',
-  'ChaosAscendant',
-  'NuitNoire',
-  '30th',
-];                                                       // extensions proposées (un onglet chacune)
-const URLS = {
-  cartes:  id => `data/${id}/cartes.json`,                 // { nom, serie, sortie, set, cartes: [{ id, name, rarity }] }
-  booster: id => `data/${id}/booster.json`,                // { set, booster: { slots: [{ position, rarities: { rareté: % } }] } }
-  image:   (id, carte) => `assets/images/${id}/${carte}.webp`,
-  save:    p => `api/save/${encodeURIComponent(p)}`,   // GET : progression du joueur (JSON, 404 si aucune) ; PUT : la remplace
-};
+/* ---------- Apparence ---------- */
+// Couleurs du booster par nom de set : [haut, milieu, bas, texte]. Un set absent de cette liste reçoit une couleur dérivée de son nom.
 const LOOK = {
-  'MegaEvolution':           ['#ff6b9d', '#c44569', '#6b2d5c', '#fff'],
-  'FlammesFantasmagoriques': ['#ff9f43', '#ee5a24', '#b33939', '#2a1300'],
-  'HerosTranscendants':      ['#54a0ff', '#2e86de', '#1e3799', '#fff'],
-  'EquilibreParfait':        ['#1dd1a1', '#10ac84', '#0a3d62', '#fff'],
-  'ChaosAscendant':          ['#ff6b6b', '#c44569', '#2c2c54', '#fff'],
-  'NuitNoire':               ['#7b5cff', '#32207a', '#0f0b2e', '#f1efff'],
-  '30th':                    ['#ffcb3d', '#ff7a3d', '#c2306b', '#2a1300'],
+  'Méga-Évolution':          ['#ff6b9d', '#c44569', '#6b2d5c', '#fff'],
+  'Flammes Fantasmagoriques': ['#ff9f43', '#ee5a24', '#b33939', '#2a1300'],
+  'Héros Transcendants':     ['#54a0ff', '#2e86de', '#1e3799', '#fff'],
+  'Équilibre Parfait':       ['#1dd1a1', '#10ac84', '#0a3d62', '#fff'],
+  'Chaos Ascendant':         ['#ff6b6b', '#c44569', '#2c2c54', '#fff'],
+  'Nuit Noire':              ['#7b5cff', '#32207a', '#0f0b2e', '#f1efff'],
+  '30ᵉ Anniversaire':        ['#ffcb3d', '#ff7a3d', '#c2306b', '#2a1300'],
 };
+const COL = { 'commune': '#aab0c8', 'peu commune': '#8fd694', 'rare': '#4da3ff', 'double rare': '#ffcb3d', 'illustration rare': '#3ddc97',
+  'illustration speciale rare': '#ff6fb5', 'ultra rare': '#ff9a5c', 'mega hyper rare': '#ff4d6d', 'rare futuriste': '#b88cff',
+  'rare pikachu': '#ffe04d', 'collection classique': '#ff9a5c', 'promo': '#d0d4e8' };
+const hue = k => { let h = 0; for (const ch of k) h = (h * 31 + ch.charCodeAt(0)) % 360; return h; };
+const col = r => { const k = norm(r); return COL[k] || `hsl(${hue(k)} 70% 65%)`; };
 
-const SETS = SET_IDS.map(id => ({ id, nom: id, serie: '', cards: [], slots: [], byRarity: {}, boosters: 0, owned: {}, error: '', absent: false }));
-let cur = SETS[0], busy = false, saveReady = false, canSave = false, pseudo = '', shown = [];
-let saveData = { version: 1, sets: {} }, chain = Promise.resolve();
+/* ---------- État ---------- */
+const cache = new Map();                       // bloc -> sets chargés
+let blocs = [], bloc = '', sets = [], cur = null, busy = false;
+let pseudo = '', saveData = fresh(), canSave = false, saveReady = false, chain = Promise.resolve();
 
-/* ---------- Chargement des données ---------- */
-async function getJSON(u) {
-  const r = await fetch(u, { cache: 'no-store' });
-  if (!r.ok) { const e = new Error('HTTP ' + r.status); e.status = r.status; throw e; }
-  return r.json();
-}
+function fresh() { return { version: 1, sets: {} }; }
+// Progression du set affiché : { boosters, cartes: { id: quantité } }
+const prog = () => (cur && saveData.sets[cle(cur.bloc, cur.set)]) || { boosters: 0, cartes: {} };
 
-async function loadSet(s) {
-  try {
-    const [c, b] = await Promise.all([getJSON(URLS.cartes(s.id)), getJSON(URLS.booster(s.id))]);
-    s.nom = c.nom || s.id; s.serie = c.serie || '';
-    s.cards = (c.cartes || []).map(x => ({ id: String(x.id), name: String(x.name), rarity: String(x.rarity) }));
-    s.slots = ((b.booster && b.booster.slots) || []).slice().sort((x, y) => (x.position || 0) - (y.position || 0))
-      .map(sl => Object.entries(sl.rarities || {}).map(([rarity, p]) => ({ rarity, p: Number(p) })).filter(o => o.p > 0))
-      .filter(sl => sl.length);
-    s.byRarity = {};
-    s.cards.forEach(c => (s.byRarity[norm(c.rarity)] ||= []).push(c));
-    if (!s.cards.length || !s.slots.length) throw new Error('cartes ou emplacements vides');
-    const missing = [...new Set(s.slots.flat().map(o => o.rarity))].filter(r => !s.byRarity[norm(r)]);
-    if (missing.length) s.error = 'Raretés sans carte dans ' + URLS.cartes(s.id) + ' : ' + missing.join(', ') + '.';
-  } catch (e) {
-    s.absent = e.status === 404;
-    s.cards = []; s.slots = [];
-    s.error = location.protocol === 'file:'
-      ? 'Ouvrez la page depuis le serveur (http), pas en double-clic : le navigateur bloque la lecture des fichiers JSON.'
-      : `Chargement impossible (${URLS.cartes(s.id)}, ${URLS.booster(s.id)}) : ${e.message}`;
-  }
+async function ensureBloc(b) {
+  if (!cache.has(b)) cache.set(b, await Promise.all((await loadSets(b)).map(n => loadSet(b, n))));
+  return cache.get(b);
 }
 
 /* ---------- Sauvegarde du joueur, sur le serveur ---------- */
-// { "version": 1, "sets": { "30th": { "boosters": 3, "cartes": { "001": 2, "CC001": 1 } } } }
-// Les extensions inconnues de cette page sont conservées telles quelles à la réécriture.
-function setSave(msg, warn) { const s = $('#saveStatus'); s.textContent = msg; s.className = warn ? 'warn' : ''; }
-
-function resetPlayer() {
-  saveData = { version: 1, sets: {} }; canSave = false; saveReady = false;
-  for (const s of SETS) { s.boosters = 0; s.owned = {}; }
-}
+// { "version": 1, "sets": { "Méga-Évolution/Nuit Noire": { "boosters": 3, "cartes": { "001": 2 } } } }
+const setSave = (msg, warn) => { const s = $('#saveStatus'); s.textContent = msg; s.className = warn ? 'warn' : ''; };
 
 async function loadSave() {
-  resetPlayer();
+  saveData = fresh(); canSave = saveReady = false;
   try {
     const r = await fetch(URLS.save(pseudo), { cache: 'no-store' });
     if (r.ok && r.status !== 204) {
       const t = await r.text();
-      if (t.trim()) {
-        const d = JSON.parse(t);
-        if (d && typeof d === 'object' && d.sets && typeof d.sets === 'object') saveData = d;
-      }
+      if (t.trim()) { const d = JSON.parse(t); if (d && typeof d === 'object' && d.sets && typeof d.sets === 'object') saveData = d; }
       setSave('Progression chargée.');
     } else if (r.status === 404 || r.status === 204) setSave('');
     else throw new Error('HTTP ' + r.status);
-    for (const s of SETS) {
-      const d = saveData.sets[s.id] || {};
-      s.boosters = d.boosters | 0; s.owned = { ...(d.cartes || {}) };
-    }
     canSave = true;
-  } catch (e) {
-    setSave('Progression non chargée (' + e.message + ') : elle ne sera pas sauvegardée.', true);
-  }
+  } catch (e) { setSave('Progression non chargée (' + e.message + ') : elle ne sera pas sauvegardée.', true); }
   saveReady = true;
 }
 
 function save() {
   if (!canSave) return chain;
-  for (const s of SETS) {
-    const cartes = {};
-    Object.keys(s.owned).sort().forEach(k => { if (s.owned[k] > 0) cartes[k] = s.owned[k]; });
-    if (s.boosters || Object.keys(cartes).length) saveData.sets[s.id] = { boosters: s.boosters, cartes };
-  }
   const body = JSON.stringify(saveData), url = URLS.save(pseudo);   // le joueur est figé ici : un changement de joueur n'écrase rien
   chain = chain.then(async () => {
     try {
@@ -245,19 +205,19 @@ function save() {
 }
 
 /* ---------- Tirage ---------- */
-function pickOption(slot) {
-  const opts = slot.filter(o => cur.byRarity[norm(o.rarity)]);
+function pickOption(set, slot) {
+  const opts = slot.filter(o => set.byRarity[norm(o.rarity)]);
   const total = opts.reduce((s, o) => s + o.p, 0);
   let r = Math.random() * total;
   for (const o of opts) { if ((r -= o.p) < 0) return { o, share: o.p / total }; }
   return { o: opts[opts.length - 1], share: 1 };
 }
 
-function draw() {
+function draw(set) {
   const pack = [];
-  for (const slot of cur.slots) {
-    const { o, share } = pickOption(slot);
-    const pool = cur.byRarity[norm(o.rarity)];
+  for (const slot of set.slots) {
+    const { o, share } = pickOption(set, slot);
+    const pool = set.byRarity[norm(o.rarity)];
     let c, n = 0;
     do { c = pool[Math.floor(Math.random() * pool.length)]; n++; } while (pack.some(x => x.card.id === c.id) && n < 25);
     pack.push({ card: c, hit: share < 0.1 });
@@ -266,11 +226,6 @@ function draw() {
 }
 
 /* ---------- Affichage ---------- */
-const COL = { 'commune': '#aab0c8', 'rare': '#4da3ff', 'double rare': '#ffcb3d', 'illustration rare': '#3ddc97',
-  'illustration speciale rare': '#ff6fb5', 'rare futuriste': '#b88cff', 'rare pikachu': '#ffe04d', 'collection classique': '#ff9a5c' };
-function hue(k) { let h = 0; for (const ch of k) h = (h * 31 + ch.charCodeAt(0)) % 360; return h; }
-function col(r) { const k = norm(r); return COL[k] || `hsl(${hue(k)} 70% 65%)`; }
-
 function capOf(card) {
   const cap = el('div', 'cap');
   cap.append(el('span', '', card.id + ' · ' + card.name), el('span', 'badge', card.rarity));
@@ -283,55 +238,84 @@ function render(pack) {
     const b = el('button', 'card' + (hit ? ' hit' : '')); b.type = 'button';
     b.style.setProperty('--c', col(card.rarity)); b.style.animationDelay = i * 90 + 'ms';
     const inner = el('div', 'inner'), back = el('div', 'face back'), front = el('div', 'face front');
-    const img = new Image(); img.alt = card.name; img.src = URLS.image(cur.id, card.id);
+    const img = new Image(); img.alt = card.name; img.src = URLS.image(cur.bloc, cur.set, card.id);
     img.onerror = () => { img.remove(); front.classList.add('noimg'); front.textContent = card.id; front.append(capOf(card)); };
     front.append(img, capOf(card));
     inner.append(back, front); b.append(inner);
     b.onclick = () => b.classList.toggle('flipped');
     box.append(b);
   });
-  cur.boosters++;
-  pack.forEach(({ card }) => { cur.owned[card.id] = (cur.owned[card.id] || 0) + 1; });
+  const p = (saveData.sets[cle(cur.bloc, cur.set)] ||= { boosters: 0, cartes: {} });
+  p.boosters++;
+  pack.forEach(({ card }) => { p.cartes[card.id] = (p.cartes[card.id] || 0) + 1; });
   refreshStats();
   save();
   $('#revealAll').hidden = false;
 }
 
 function refreshStats() {
-  const n = cur.boosters;
+  const p = prog(), n = p.boosters | 0;
   $('#count').textContent = n + (n > 1 ? ' boosters ouverts' : ' booster ouvert');
-  const byId = Object.fromEntries(cur.cards.map(c => [c.id, c]));
-  const owned = Object.keys(cur.owned).filter(id => cur.owned[id] > 0).sort((a, b) => a.localeCompare(b));
+  const cards = cur ? cur.cards : [];
+  const byId = Object.fromEntries(cards.map(c => [c.id, c]));
+  const owned = Object.keys(p.cartes).filter(id => p.cartes[id] > 0).sort((a, b) => a.localeCompare(b));
   const rar = {};
-  owned.forEach(id => { const c = byId[id]; if (c) rar[c.rarity] = (rar[c.rarity] || 0) + cur.owned[id]; });
+  owned.forEach(id => { const c = byId[id]; if (c) rar[c.rarity] = (rar[c.rarity] || 0) + p.cartes[id]; });
   const t = $('#tally'); t.replaceChildren();
   Object.entries(rar).sort((a, b) => b[1] - a[1]).forEach(([r, k]) => {
     const c = el('span', 'chip', `${r} : ${k}`); c.style.setProperty('--c', col(r)); t.append(c);
   });
-  $('#collSum').textContent = `Ma collection (${cur.nom}) : ${owned.length}` + (cur.cards.length ? ' sur ' + cur.cards.length : '') + ' cartes différentes';
+  $('#collSum').textContent = `Ma collection${cur ? ' (' + cur.set + ')' : ''} : ${owned.length}` + (cards.length ? ' sur ' + cards.length : '') + ' cartes différentes';
   const ul = $('#collList'); ul.replaceChildren();
-  owned.forEach(id => ul.append(el('li', '', `${id} · ${byId[id] ? byId[id].name : ''} × ${cur.owned[id]}`)));
+  owned.forEach(id => ul.append(el('li', '', `${id} · ${byId[id] ? byId[id].name : ''} × ${p.cartes[id]}`)));
 }
+
+/* ---------- Navigation : bloc → set ---------- */
+function tabs(box, noms, current, onPick, off = () => false) {
+  box.replaceChildren();
+  noms.forEach(n => {
+    const b = el('button', 'tab' + (off(n) ? ' off' : ''), n); b.type = 'button'; b.dataset.v = n;
+    b.setAttribute('aria-pressed', String(n === current)); b.onclick = () => onPick(n);
+    box.append(b);
+  });
+}
+const pressed = (box, v) => box.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === v)));
 
 function selectSet(s) {
   if (busy) return;
-  cur = s;
-  document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === s.id)));
-  const [a, b, c, ink] = LOOK[s.id] || [`hsl(${hue(s.id)} 80% 62%)`, `hsl(${hue(s.id) + 40} 60% 38%)`, `hsl(${hue(s.id) + 80} 60% 16%)`, '#fff'];
-  const p = $('#pack');
-  p.style.setProperty('--pg', `linear-gradient(160deg,${a},${b} 55%,${c})`); p.style.setProperty('--ink', ink);
-  $('#packNom').textContent = s.nom; $('#packSerie').textContent = s.serie;
+  cur = s || null;
+  pressed($('#tabs'), cur && cur.set);
   $('#cards').replaceChildren(); $('#revealAll').hidden = true;
-  const st = $('#status'); st.textContent = s.error; st.hidden = !s.error;
-  const ul = $('#slotsInfo'); ul.replaceChildren();
-  s.slots.forEach((sl, i) => ul.append(el('li', '', `Carte ${i + 1} : ` + sl.map(o => `${o.rarity} ${o.p} %`).join(', '))));
-  p.disabled = !(s.cards.length && s.slots.length && saveReady);
+  const p = $('#pack'), st = $('#status');
+  $('#slotsInfo').replaceChildren(); $('#ratesInfo').replaceChildren();
+  if (!cur) { st.textContent = 'Aucun set dans ce bloc.'; st.hidden = false; p.disabled = true; refreshStats(); return; }
+  const [a, b, c, ink] = LOOK[cur.set] || [`hsl(${hue(cur.set)} 80% 62%)`, `hsl(${hue(cur.set) + 40} 60% 38%)`, `hsl(${hue(cur.set) + 80} 60% 16%)`, '#fff'];
+  p.style.setProperty('--pg', `linear-gradient(160deg,${a},${b} 55%,${c})`); p.style.setProperty('--ink', ink);
+  $('#packNom').textContent = cur.set; $('#packSerie').textContent = cur.bloc;
+  st.textContent = cur.absent ? 'Ce set n’est pas encore disponible.' : cur.error; st.hidden = !st.textContent;
+  cur.slots.forEach((sl, i) => $('#slotsInfo').append(el('li', '', `Carte ${i + 1} : ` + sl.map(o => `${o.rarity} ${o.p} %`).join(', '))));
+  cur.rates.forEach(r => $('#ratesInfo').append(el('li', '', `${r.rarity} : ${r.cartes} carte${r.cartes > 1 ? 's' : ''} · 1 sur ${r.chance}`)));
+  $('#ratesTitle').hidden = !cur.rates.length;
+  p.disabled = !(cur.cards.length && cur.slots.length && saveReady);
   refreshStats();
 }
 
+const premier = () => sets.find(s => s.cards.length) || sets[0];
+function buildSets() {
+  tabs($('#tabs'), sets.map(s => s.set), cur && cur.set, n => selectSet(sets.find(s => s.set === n)), n => !sets.find(s => s.set === n).cards.length);
+}
+
+async function selectBloc(b) {
+  if (busy) return;
+  bloc = b; pressed($('#blocs'), b);
+  try { sets = await ensureBloc(b); } catch (e) { sets = []; }
+  cur = null; buildSets(); selectSet(premier());
+}
+
+/* ---------- Actions ---------- */
 $('#pack').onclick = () => {
   if (busy) return; busy = true;
-  const pack = draw(), p = $('#pack');
+  const pack = draw(cur), p = $('#pack');
   p.classList.add('open');
   setTimeout(() => { p.classList.remove('open'); render(pack); busy = false; }, 650);
 };
@@ -348,31 +332,27 @@ async function login(name) {
   $('#go').disabled = false;
   $('#whoName').textContent = name;
   $('#login').hidden = true; $('#game').hidden = false;
-  selectSet(shown[0]);
+  buildSets(); selectSet(premier());
 }
 $('#loginForm').onsubmit = e => { e.preventDefault(); login($('#pseudo').value.trim()); };
 $('#logout').onclick = () => {
   if (busy) return;
-  pseudo = ''; resetPlayer(); $('#cards').replaceChildren();
+  pseudo = ''; saveData = fresh(); canSave = saveReady = false; $('#cards').replaceChildren();
   $('#game').hidden = true; $('#login').hidden = false;
   $('#pseudo').value = ''; $('#pseudo').focus();
 };
 
 /* ---------- Démarrage ---------- */
 (async () => {
-  await Promise.all(SETS.map(loadSet));
-  shown = SETS.filter(s => !s.absent);                    // une extension dont cartes.json n'existe pas (404) n'est pas affichée
-  if (!shown.length) shown = [SETS[0]];
-  if (shown.length > 1) {
-    shown.forEach(s => {
-      const b = el('button', 'tab', s.nom); b.type = 'button'; b.dataset.set = s.id; b.onclick = () => selectSet(s);
-      $('#tabs').append(b);
-    });
-    $('#tabs').hidden = false;
+  try {
+    blocs = await loadBlocs();
+    if (!blocs.length) throw new Error('aucun bloc dans ' + URLS.blocs());
+    bloc = blocs[0]; sets = await ensureBloc(bloc);
+  } catch (e) {
+    $('#loginMsg').textContent = 'Données illisibles : ' + e.message; $('#go').disabled = true; $('#login').hidden = false; return;
   }
-  $('#login').hidden = false;
-  if (shown.every(s => !s.cards.length)) { $('#loginMsg').textContent = shown[0].error; $('#go').disabled = true; }
-  else $('#pseudo').focus();
+  if (blocs.length > 1) { tabs($('#blocs'), blocs, bloc, selectBloc); $('#blocs').hidden = false; }
+  $('#login').hidden = false; $('#pseudo').focus();
 })();
 </script>
 </body>
