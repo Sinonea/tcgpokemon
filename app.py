@@ -11,15 +11,15 @@ from vercel import blob
 
 app = FastAPI()
 
-TOKEN = os.environ.get("ADMIN_TOKEN") or "change-me-in-production"
+TOKEN = os.environ.get("ADMIN_TOKEN", "")  # sans ADMIN_TOKEN, l'accès admin est refusé à tout le monde
 PSEUDO_RE = re.compile(r"^[a-z0-9_-]{2,20}$")
 MAX_BODY = 1_000_000
 SAVES_PREFIX = "saves/"
 
 def is_admin(authorization: Optional[str]) -> bool:
-    if not authorization:
+    if not TOKEN or not authorization:
         return False
-    return hmac.compare_digest(authorization, f"Bearer {TOKEN}")
+    return hmac.compare_digest(authorization.encode("utf-8"), f"Bearer {TOKEN}".encode("utf-8"))
 
 def valid_pseudo(p: str) -> bool:
     return bool(PSEUDO_RE.fullmatch(p.lower()))
